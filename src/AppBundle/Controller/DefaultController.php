@@ -29,4 +29,16 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+
+    /**
+     * @Route("/contactar/{sitio}", name="contactar")
+     */
+    public function contactarAction(Request $request, $sitio = "todos")
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/contactar.html.twig', [
+            'sitio' => $sitio,
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
+        ]);
+    }
 }

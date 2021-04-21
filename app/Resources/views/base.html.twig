@@ -26,16 +26,17 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{path("nosotros")}}">Nosotros</a>
+                    <a class="nav-link" href="{{ path("nosotros") }}">Nosotros</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" {#href="{{path("home_contactar")}}"#} id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="{{ path("contactar",{'sitio': 'vlc'}) }}"
+                       id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Bares
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                        <a class="dropdown-item" {#href="{{path("home_contactar",{'sitio': 'vlc'})}}"#}>Valencia</a>
-                        <a class="dropdown-item" {#href="{{path("home_contactar",{'sitio': 'bcn'})}}"#}>Barcelona</a>
-                        <a class="dropdown-item" {#href="{{path("home_contactar",{'sitio': 'mdr'})}}"#}>Madrid</a>
+                        <a class="dropdown-item" href="{{ path("contactar",{'sitio': 'vlc'}) }}">Valencia</a>
+                        <a class="dropdown-item" href="{{ path("contactar",{'sitio': 'bcn'}) }}">Barcelona</a>
+                        <a class="dropdown-item" href="{{ path("contactar",{'sitio': 'mdr'}) }}">Madrid</a>
                     </div>
                 </li>
                 <li class="nav-item">
