@@ -46,4 +46,20 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
         ]);
     }
+
+    /**
+     * @Route("/producto/{id}",name="producto")
+     */
+    public function tapaAction($id)
+    {
+        if (!is_null($id)) {
+            $repository = $this->getDoctrine()->getRepository(Producto::class);
+            $producto = $repository->find($id);
+            if (empty($producto))
+                return $this->redirectToRoute('homepage');
+            else
+            return $this->render('default/producto.html.twig', array("producto" => $producto));
+        } else
+            return $this->redirectToRoute('homepage');
+    }
 }
