@@ -70,3 +70,15 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
+
+ivory_ck_editor:
+    configs:
+        my_config_1:
+            #toolbar: "my_toolbar_1"
+            #toolbar: full
+            #toolbar: standard
+            toolbar: basic
+            uiColor: "#ffffff"
+    toolbars:
+        configs:
+            my_toolbar_1: [ [ "Source", "-", 'Bold', 'Italic','-','NumberedList','BulletedList']]
