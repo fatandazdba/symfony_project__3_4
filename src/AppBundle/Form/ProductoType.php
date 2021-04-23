@@ -22,7 +22,8 @@ class ProductoType extends AbstractType
     {
         $builder
             ->add('nombre', TextType::class, array('attr' => array('class' => 'form-control')))
-            ->add('descripcion', CKEditorType::class, array('attr' => array('class' => 'form-control')))
+            //->add('descripcion', CKEditorType::class, array('attr' => array('class' => 'form-control')))
+            ->add('descripcion', TextareaType::class, array('attr' => array('class' => 'form-control')))
             ->add('precio', MoneyType::class, array('attr' => array('class' => 'form-control')))
             //->add('ingredientes', CKEditorType::class, array('config_name' => 'my_config_1'))
             //->add('foto', FileType::class, array('attr' => array('onchange' => 'onChange(event)')))
