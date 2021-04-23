@@ -21,15 +21,14 @@ class ProductoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre', TextType::class, array('attr' => array('class' => 'form-control')))
+            ->add('nombre', TextType::class)
             //->add('descripcion', CKEditorType::class, array('attr' => array('class' => 'form-control')))
-            ->add('descripcion', TextareaType::class, array('attr' => array('class' => 'form-control')))
-            ->add('precio', MoneyType::class, array('attr' => array('class' => 'form-control')))
-            //->add('ingredientes', CKEditorType::class, array('config_name' => 'my_config_1'))
-            //->add('foto', FileType::class, array('attr' => array('onchange' => 'onChange(event)')))
+            ->add('descripcion', TextareaType::class)
+            ->add('precio', MoneyType::class)
+            ->add('foto', FileType::class, array('attr' => array('onchange' => 'onChange(event)')))
             //->add('fechaCreacion', DateType::class)
             //->add('top')
-            ->add('Guardar', SubmitType::class);
+            ->add('Guardar', SubmitType::class, array('label'=>'Nuevo producto'));
     }
 
     /**

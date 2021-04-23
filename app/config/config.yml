@@ -8,6 +8,8 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    #brochures_directory:
+    upload_foto_directorio: '%kernel.project_dir%/web/upload_foto_directorio'
 
 framework:
     #esi: ~

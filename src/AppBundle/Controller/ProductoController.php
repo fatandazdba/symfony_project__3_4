@@ -31,23 +31,21 @@ class ProductoController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $producto = $form->getData();
-            $producto->setPrecio(0.15);
+            //$producto->setPrecio(0.15);
 
             // $file stores the uploaded PDF file
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
-            /*$fotoFile = $producto->getFoto();*/
+            $fotoFile = $producto->getFoto();
             // Generate a unique name for the file before saving it
-            /*$fotoFileName = md5(uniqid()).'.'.$fotoFile->guessExtension();*/
-
+            $fotoFileName = md5(uniqid()).'.'.$fotoFile->guessExtension();
             // Move the file to the directory where brochures are stored
-            /*$fotoFile->move(
-                $this->getParameter('foto_directory'),
+            $fotoFile->move(
+                $this->getParameter('upload_foto_directorio'),
                 $fotoFileName
-            );*/
+            );
             // Update the 'brochure' property to store the PDF file name
             // instead of its contents
-            /*$producto->setFoto($fotoFileName);*/
-
+            $producto->setFoto($fotoFileName);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($producto);
