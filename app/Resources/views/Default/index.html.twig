@@ -54,8 +54,9 @@
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
                         <a href="{{ path('producto',{'id': producto.id}) }}"><img class="card-img-top"
-                                                                              src="{{ asset('img/index/seguridad-industrial-700x400.jpg') }}"
-                                                                              alt=""></a>
+                                                                                  alt="" width="700" height="300"
+                                                                                  src={% if producto.foto|length > 0 %}"{{ rutaFoto ~ producto.foto }}" {% else %}"{{ asset('img/index/seguridad-industrial-700x400.jpg') }}"  {% endif %}
+                            ></a>
                         <div class="card-body">
                             <h4 class="card-title">
                                 <a href="{{ path('producto',{'id': producto.id}) }}">{{ producto.nombre }}</a>

@@ -38,6 +38,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+        rutaFoto: '/upload_foto_directorio/'
 
 # Doctrine Configuration
 doctrine:
