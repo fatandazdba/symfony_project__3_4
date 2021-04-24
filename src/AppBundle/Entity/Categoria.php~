@@ -135,38 +135,5 @@ class Categoria
     {
         return $this->foto;
     }
-
-    /**
-     * Add producto
-     *
-     * @param \AppBundle\Entity\Producto $producto
-     *
-     * @return Categoria
-     */
-    public function addProducto(\AppBundle\Entity\Producto $producto)
-    {
-        $this->productos[] = $producto;
-
-        return $this;
-    }
-
-    /**
-     * Remove producto
-     *
-     * @param \AppBundle\Entity\Producto $producto
-     */
-    public function removeProducto(\AppBundle\Entity\Producto $producto)
-    {
-        $this->productos->removeElement($producto);
-    }
-
-    /**
-     * Get productos
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProductos()
-    {
-        return $this->productos;
-    }
 }
+

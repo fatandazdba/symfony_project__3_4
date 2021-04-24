@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Producto
 {
     /**
+     * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="productos")
+     * @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
+     */
+    private $categoria;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -154,5 +160,28 @@ class Producto
     {
         return $this->foto;
     }
-}
 
+    /**
+     * Set categoria
+     *
+     * @param \AppBundle\Entity\Categoria $categoria
+     *
+     * @return Producto
+     */
+    public function setCategoria(\AppBundle\Entity\Categoria $categoria = null)
+    {
+        $this->categoria = $categoria;
+
+        return $this;
+    }
+
+    /**
+     * Get categoria
+     *
+     * @return \AppBundle\Entity\Categoria
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+}

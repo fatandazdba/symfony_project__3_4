@@ -3,25 +3,20 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Categoria
+ * Producto
  *
- * @ORM\Table(name="categoria")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoriaRepository")
+ * @ORM\Table(name="producto")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductoRepository")
  */
-class Categoria
+class Producto
 {
     /**
-     * @ORM\OneToMany(targetEntity="Producto", mappedBy="categoria")
+     * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="productos")
+     * @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
      */
-    private $productos;
-
-    public function __construct()
-    {
-        $this->productos = new ArrayCollection();
-    }
+    private $categoria;
 
     /**
      * @var int
@@ -47,12 +42,18 @@ class Categoria
     private $descripcion;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="precio", type="float")
+     */
+    private $precio;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="foto", type="string", length=522)
+     * @ORM\Column(name="foto", type="string", length=255)
      */
     private $foto;
-
 
     /**
      * Get id
@@ -69,7 +70,7 @@ class Categoria
      *
      * @param string $nombre
      *
-     * @return Categoria
+     * @return Producto
      */
     public function setNombre($nombre)
     {
@@ -93,7 +94,7 @@ class Categoria
      *
      * @param string $descripcion
      *
-     * @return Categoria
+     * @return Producto
      */
     public function setDescripcion($descripcion)
     {
@@ -113,11 +114,35 @@ class Categoria
     }
 
     /**
+     * Set precio
+     *
+     * @param float $precio
+     *
+     * @return Producto
+     */
+    public function setPrecio($precio)
+    {
+        $this->precio = $precio;
+
+        return $this;
+    }
+
+    /**
+     * Get precio
+     *
+     * @return float
+     */
+    public function getPrecio()
+    {
+        return $this->precio;
+    }
+
+    /**
      * Set foto
      *
      * @param string $foto
      *
-     * @return Categoria
+     * @return Producto
      */
     public function setFoto($foto)
     {
@@ -135,38 +160,5 @@ class Categoria
     {
         return $this->foto;
     }
-
-    /**
-     * Add producto
-     *
-     * @param \AppBundle\Entity\Producto $producto
-     *
-     * @return Categoria
-     */
-    public function addProducto(\AppBundle\Entity\Producto $producto)
-    {
-        $this->productos[] = $producto;
-
-        return $this;
-    }
-
-    /**
-     * Remove producto
-     *
-     * @param \AppBundle\Entity\Producto $producto
-     */
-    public function removeProducto(\AppBundle\Entity\Producto $producto)
-    {
-        $this->productos->removeElement($producto);
-    }
-
-    /**
-     * Get productos
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProductos()
-    {
-        return $this->productos;
-    }
 }
+
