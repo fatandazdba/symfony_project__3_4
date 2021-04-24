@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Doctrine\DBAL\Types\FloatType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -25,6 +26,8 @@ class ProductoType extends AbstractType
             //->add('descripcion', CKEditorType::class, array('attr' => array('class' => 'form-control')))
             ->add('descripcion', TextareaType::class)
             ->add('precio', MoneyType::class)
+            //->add('categoria')
+            ->add('categoria', EntityType::class, array('class'=>'AppBundle:Categoria'))
             ->add('foto', FileType::class, array('attr' => array('onchange' => 'onChange(event)')))
             //->add('fechaCreacion', DateType::class)
             //->add('top')

@@ -169,4 +169,11 @@ class Categoria
     {
         return $this->productos;
     }
+
+    //Conversion a cadena
+    public function __toString()
+    {
+        return $this->nombre;
+    }
+
 }

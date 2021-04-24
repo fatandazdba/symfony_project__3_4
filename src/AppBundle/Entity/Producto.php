@@ -184,4 +184,10 @@ class Producto
     {
         return $this->categoria;
     }
+
+    //Conversion a cadena
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 }
