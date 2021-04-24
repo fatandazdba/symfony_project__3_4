@@ -249,4 +249,3 @@ class Usuario
         return $this->plainPassword;
     }
 }
-

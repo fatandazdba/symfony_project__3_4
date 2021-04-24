@@ -28,6 +28,7 @@ class ProductoType extends AbstractType
             ->add('precio', MoneyType::class)
             //->add('categoria')
             ->add('categoria', EntityType::class, array('class'=>'AppBundle:Categoria'))
+            ->add('accesorios', EntityType::class, array('class'=>'AppBundle:Accesorio', 'multiple' => true))
             ->add('foto', FileType::class, array('attr' => array('onchange' => 'onChange(event)')))
             //->add('fechaCreacion', DateType::class)
             //->add('top')

@@ -19,6 +19,20 @@ class Producto
     private $categoria;
 
     /**
+     * Many Accesorios have Many Productos.
+     * @ORM\ManyToMany(targetEntity="Accesorio")
+     * @ORM\JoinTable(name="productos_accesorios",
+     *      joinColumns={@ORM\JoinColumn(name="producto_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="accesorio_id", referencedColumnName="id")}
+     *      )
+     */
+    private $accesorios;
+
+    public function __construct() {
+        $this->accesorios = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -189,5 +203,39 @@ class Producto
     public function __toString()
     {
         return $this->nombre;
+    }
+
+    /**
+     * Add accesorio
+     *
+     * @param \AppBundle\Entity\Accesorio $accesorio
+     *
+     * @return Producto
+     */
+    public function addAccesorio(\AppBundle\Entity\Accesorio $accesorio)
+    {
+        $this->accesorios[] = $accesorio;
+
+        return $this;
+    }
+
+    /**
+     * Remove accesorio
+     *
+     * @param \AppBundle\Entity\Accesorio $accesorio
+     */
+    public function removeAccesorio(\AppBundle\Entity\Accesorio $accesorio)
+    {
+        $this->accesorios->removeElement($accesorio);
+    }
+
+    /**
+     * Get accesorios
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAccesorios()
+    {
+        return $this->accesorios;
     }
 }

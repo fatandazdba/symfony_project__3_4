@@ -19,6 +19,20 @@ class Producto
     private $categoria;
 
     /**
+     * Many Accesorios have Many Productos.
+     * @ORM\ManyToMany(targetEntity="Accesorio")
+     * @ORM\JoinTable(name="productos_accesorios",
+     *      joinColumns={@ORM\JoinColumn(name="producto_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="accesorio_id", referencedColumnName="id")}
+     *      )
+     */
+    private $accesorios;
+
+    public function __construct() {
+        $this->accesorios = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -160,5 +174,34 @@ class Producto
     {
         return $this->foto;
     }
-}
 
+    /**
+     * Set categoria
+     *
+     * @param \AppBundle\Entity\Categoria $categoria
+     *
+     * @return Producto
+     */
+    public function setCategoria(\AppBundle\Entity\Categoria $categoria = null)
+    {
+        $this->categoria = $categoria;
+
+        return $this;
+    }
+
+    /**
+     * Get categoria
+     *
+     * @return \AppBundle\Entity\Categoria
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+
+    //Conversion a cadena
+    public function __toString()
+    {
+        return $this->nombre;
+    }
+}

@@ -100,3 +100,4 @@ class Accesorio
         return $this->nombre;
     }
 }
+
