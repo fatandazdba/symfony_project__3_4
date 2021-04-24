@@ -1,0 +1,31 @@
+{# app/Resources/views/blog/index.html.twig #}
+{% extends 'base.html.twig' %}
+{% block body %}
+    </header>
+    <!-- Page Content -->
+    <div class="container">
+        <h1 class="my-4">Categoría {{ categoria.nombre }} </h1>
+
+        <!-- Portfolio Item Row -->
+        <div class="row">
+
+            <div class="col-md-8">
+                <img class="img-fluid" src="{{ rutaFoto ~ categoria.foto }}" alt="">
+            </div>
+
+            <div class="col-md-4">
+                <h3 class="my-3">{{ categoria.nombre }}</h3>
+                <p>{{ categoria.descripcion }}</p>
+                <h3 class="my-3">Ingredientes</h3>
+                {{ categoria.descripcion|raw }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('gestion_nueva_tapa',{'id': categoria.id}) }}"><i class="fa fa-pencil-square-o"
+                                                                                       aria-hidden="true"></i>
+                        Editar</a>
+                {% endif %}
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div>
+{% endblock %}
