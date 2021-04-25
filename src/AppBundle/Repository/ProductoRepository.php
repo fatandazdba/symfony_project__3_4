@@ -10,4 +10,16 @@ namespace AppBundle\Repository;
  */
 class ProductoRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getProductosPorPaginacion($pagina, $numeroProductos)
+    {
+        $query = $this->createQueryBuilder('p')
+            //->where('p.id > :id')
+            ->orderBy('p.nombre', 'ASC')
+            ->setFirstResult($numeroProductos * ($pagina - 1))
+            ->setMaxResults($numeroProductos)
+            ->getQuery();
+        //$query->setParameter('id', 1);
+        return $query->getResult();
+
+    }
 }

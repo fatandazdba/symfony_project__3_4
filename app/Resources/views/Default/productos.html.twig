@@ -1,0 +1,168 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <h1 class="my-4">Welcome to Modern Business</h1>
+
+        <!-- Marketing Icons Section -->
+        <div class="row">
+            {% for producto in productos %}
+                <div class="col-lg-4 col-sm-6 portfolio-item">
+                    <div class="card h-100">
+                        <a href="{{ path('producto',{'id': producto.id}) }}"><img class="card-img-top"
+                                                                                  alt="" width="700" height="300"
+                                                                                  src={% if producto.foto|length > 0 %}"{{ rutaFoto ~ producto.foto }}" {% else %}"{{ asset('img/index/seguridad-industrial-700x400.jpg') }}"  {% endif %}
+                            ></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="{{ path('producto',{'id': producto.id}) }}">{{ producto.nombre }}</a>
+                            </h4>
+                            <p class="card-text">{{ producto.descripcion }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- /.row -->
+
+        <hr>
+    {#</div>#}
+
+
+    <!-- Pagination -->
+        {% if maxPages > 1 %}
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    {%if thisPage > 1 %}
+                        <li class="page-item"><a class="page-link" href="{{ path('productos', {pagina: thisPage-1 < 1 ? 1 : thisPage-1}) }}">Anterior</a></li>
+                    {% endif %}
+                    {# Render each page number #}
+                    {% for i in 1..maxPages %}
+                        <li class="page-item"><a class="page-link" href="{{ path('productos', {pagina: i}) }}">{{ i }}</a></li>
+                    {% endfor %}
+                    {%if thisPage < maxPages %}
+                        <li class="page-item"><a class="page-link" href="{{ path('productos', {pagina: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">Siguiente</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+
+    </div>
+    <!-- /.container -->
+
+
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        body {
+            background: #F5F5F5;
+            font: 18px/1.5 sans-serif;
+        }
+
+        h1, h2 {
+            line-height: 1.2;
+            margin: 0 0 .5em;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        h2 {
+            font-size: 21px;
+            margin-bottom: 1em;
+        }
+
+        p {
+            margin: 0 0 1em 0;
+        }
+
+        a {
+            color: #0000F0;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        code {
+            background: #F5F5F5;
+            max-width: 100px;
+            padding: 2px 6px;
+            word-wrap: break-word;
+        }
+
+        #wrapper {
+            background: #FFF;
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+        }
+
+        #container {
+            padding: 2em;
+        }
+
+        #welcome, #status {
+            margin-bottom: 2em;
+        }
+
+        #welcome h1 span {
+            display: block;
+            font-size: 75%;
+        }
+
+        #icon-status, #icon-book {
+            float: left;
+            height: 64px;
+            margin-right: 1em;
+            margin-top: -4px;
+            width: 64px;
+        }
+
+        #icon-book {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            #wrapper {
+                width: 80%;
+                margin: 2em auto;
+            }
+
+            #icon-book {
+                display: inline-block;
+            }
+
+            #status a, #next a {
+                display: block;
+            }
+
+            @-webkit-keyframes fade-in {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            @keyframes fade-in {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            .sf-toolbar {
+                opacity: 0;
+                -webkit-animation: fade-in 1s .2s forwards;
+                animation: fade-in 1s .2s forwards;
+            }
+        }
+    </style>
+{% endblock %}
