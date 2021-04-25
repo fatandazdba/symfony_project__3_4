@@ -50,7 +50,7 @@ class DefaultController extends Controller
     /**
      * @Route("/producto/{id}",name="producto")
      */
-    public function tapaAction($id)
+    public function productoAction($id)
     {
         if (!is_null($id)) {
             $repository = $this->getDoctrine()->getRepository(Producto::class);
